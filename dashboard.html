@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cephroid Shark Tank – Contestant Live Statistics Dashboard" />
+  <title>Project Dashboard | Cephroid Shark Tank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-body contestant-dash">
+
+  <!-- ============================================================
+       TOP NAVIGATION HEADER
+  ============================================================ -->
+  <header class="dash-header" id="dashHeader">
+    <div class="dash-header-inner">
+
+      <!-- Logo -->
+      <a href="#" class="dash-logo" aria-label="Cephroid Shark Tank Home">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32" aria-hidden="true">
+          <path d="M32 4L58 18V46L32 60L6 46V18L32 4Z" stroke="url(#navHex3)" stroke-width="2.5" fill="none"/>
+          <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="800" fill="url(#navText3)" font-family="Outfit, sans-serif">ST</text>
+          <defs>
+            <linearGradient id="navHex3" x1="6" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#00D4FF"/><stop offset="1" stop-color="#7B2FFF"/></linearGradient>
+            <linearGradient id="navText3" x1="6" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#00D4FF"/><stop offset="1" stop-color="#7B2FFF"/></linearGradient>
+          </defs>
+        </svg>
+        <span class="dash-logo-label">Cephroid ST</span>
+      </a>
+
+      <!-- Live Indicator -->
+      <div class="live-indicator" aria-label="Live data indicator">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span>LIVE</span>
+      </div>
+
+      <!-- Last updated timestamp -->
+      <div class="last-updated" id="lastUpdated" aria-live="polite" aria-label="Last data update time">
+        Last updated: <span id="lastUpdatedTime">—</span>
+      </div>
+
+      <!-- Logout Button -->
+      <button class="btn-logout" id="logoutBtn" aria-label="Logout from Contestant Portal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        <span>Logout</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN DASHBOARD CONTENT
+  ============================================================ -->
+  <main class="dash-main" id="dashMain" role="main">
+
+    <!-- ── Section 1: Project Identity ── -->
+    <section class="dash-section project-identity" aria-labelledby="projectIdentityHeading">
+      <h1 class="project-name" id="projectName" aria-live="polite">Loading...</h1>
+      <div class="project-meta">
+        <span class="team-id-badge" id="teamIdBadge" aria-live="polite">Team ID: —</span>
+        <span class="project-category-badge" id="projectCategory" aria-live="polite">Category: —</span>
+      </div>
+      <p class="project-tagline" id="projectTagline" aria-live="polite">Your live funding statistics are shown below.</p>
+    </section>
+
+    <!-- ── Section 2: Coin Counters ── -->
+    <section class="dash-section coin-counters" aria-labelledby="counterHeading">
+      <h2 class="visually-hidden" id="counterHeading">Funding Counters</h2>
+
+      <!-- Gold Coins Counter -->
+      <div class="coin-counter-card gold-card" aria-label="Gold Coins Raised">
+        <div class="counter-glow gold-glow" aria-hidden="true"></div>
+        <div class="counter-icon" aria-hidden="true">🥇</div>
+        <div class="counter-value" id="goldCoinCount" aria-live="polite" aria-atomic="true">0</div>
+        <div class="counter-label">Gold Coins Raised</div>
+        <div class="counter-subtitle">(Jury Investments)</div>
+      </div>
+
+      <!-- Silver Coins Counter -->
+      <div class="coin-counter-card silver-card" aria-label="Silver Coins Raised">
+        <div class="counter-glow silver-glow" aria-hidden="true"></div>
+        <div class="counter-icon" aria-hidden="true">🥈</div>
+        <div class="counter-value" id="silverCoinCount" aria-live="polite" aria-atomic="true">0</div>
+        <div class="counter-label">Silver Coins Raised</div>
+        <div class="counter-subtitle">(Viewer Investments)</div>
+      </div>
+
+    </section>
+
+    <!-- ── Section 3: Total & Progress ── -->
+    <section class="dash-section funding-progress" aria-labelledby="progressHeading">
+      <h2 class="section-title" id="progressHeading">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="22" height="22"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Funding Progress
+      </h2>
+
+      <!-- Total Combined Display -->
+      <div class="total-raised" aria-label="Total funding raised">
+        <span class="total-label">Total Coins Raised</span>
+        <span class="total-value" id="totalCoins" aria-live="polite">0</span>
+      </div>
+
+      <!-- Progress bar toward funding goal -->
+      <div class="progress-bar-wrap" role="progressbar" aria-labelledby="progressHeading" aria-valuemin="0" aria-valuemax="100" id="progressBarWrap" aria-valuenow="0">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+          <div class="progress-glow" id="progressGlow" style="left: 0%"></div>
+        </div>
+        <div class="progress-labels">
+          <span class="progress-pct" id="progressPct" aria-live="polite">0%</span>
+          <span class="progress-goal">Goal: <span id="fundingGoal">500</span> coins</span>
+        </div>
+      </div>
+
+      <!-- Milestone markers -->
+      <div class="milestone-row" aria-label="Funding milestones">
+        <div class="milestone" id="milestone25" aria-label="25% milestone">
+          <div class="milestone-dot"></div>
+          <span>25%</span>
+        </div>
+        <div class="milestone" id="milestone50" aria-label="50% milestone">
+          <div class="milestone-dot"></div>
+          <span>50%</span>
+        </div>
+        <div class="milestone" id="milestone75" aria-label="75% milestone">
+          <div class="milestone-dot"></div>
+          <span>75%</span>
+        </div>
+        <div class="milestone" id="milestone100" aria-label="100% milestone – Goal Reached">
+          <div class="milestone-dot"></div>
+          <span>Goal!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 4: Investor Leaderboard Preview ── -->
+    <section class="dash-section leaderboard-section" aria-labelledby="lbHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="lbHeading">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="22" height="22"><polyline points="18 20 18 10"/><polyline points="12 20 12 4"/><polyline points="6 20 6 14"/></svg>
+          Top Investors
+        </h2>
+      </div>
+      <div class="leaderboard-list" id="leaderboardList" aria-label="Top investors list">
+        <div class="lb-empty" id="lbEmpty">Waiting for investments...</div>
+      </div>
+    </section>
+
+    <!-- ── Section 5: QR Code Display (for investors to scan) ── -->
+    <section class="dash-section qr-display-section" aria-labelledby="qrDisplayHeading">
+      <h2 class="section-title" id="qrDisplayHeading">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" width="22" height="22"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/><rect x="7" y="7" width="4" height="4"/><rect x="13" y="7" width="4" height="4"/><rect x="7" y="13" width="4" height="4"/><rect x="13" y="13" width="4" height="4"/></svg>
+        Your Project QR Code
+      </h2>
+      <p class="section-desc">Show this QR code to investors so they can scan and invest.</p>
+      <!-- QR will be generated dynamically by app.js using an API -->
+      <div class="qr-display-wrap" id="qrDisplayWrap" aria-label="Project QR code">
+        <img id="qrCodeImg" src="" alt="Project QR Code – Loading..." class="qr-image" />
+        <p class="qr-caption" id="qrCaption">Generating...</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
