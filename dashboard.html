@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Cephroid Shark Tank – Contestant Live Statistics Dashboard" />
-  <title>Project Dashboard | Cephroid Shark Tank</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <title>Project Dashboard | CEBROID 2k26 – Shark Tank</title>
+  <!-- Fonts loaded via style.css @import -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="dashboard-body contestant-dash">
@@ -18,17 +16,22 @@
   <header class="dash-header" id="dashHeader">
     <div class="dash-header-inner">
 
-      <!-- Logo -->
-      <a href="#" class="dash-logo" aria-label="Cephroid Shark Tank Home">
+      <!-- GOT Sigil Logo -->
+      <a href="#" class="dash-logo" aria-label="CEBROID 2k26 Home">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32" aria-hidden="true">
-          <path d="M32 4L58 18V46L32 60L6 46V18L32 4Z" stroke="url(#navHex3)" stroke-width="2.5" fill="none"/>
-          <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="800" fill="url(#navText3)" font-family="Outfit, sans-serif">ST</text>
           <defs>
-            <linearGradient id="navHex3" x1="6" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#00D4FF"/><stop offset="1" stop-color="#7B2FFF"/></linearGradient>
-            <linearGradient id="navText3" x1="6" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#00D4FF"/><stop offset="1" stop-color="#7B2FFF"/></linearGradient>
+            <linearGradient id="navSigil3" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#C41E1E"/><stop offset="1" stop-color="#D4500A"/>
+            </linearGradient>
           </defs>
+          <path d="M32 4 L56 14 L56 36 Q56 52 32 60 Q8 52 8 36 L8 14 Z" stroke="url(#navSigil3)" stroke-width="2" fill="rgba(196,30,30,0.12)"/>
+          <line x1="20" y1="20" x2="44" y2="44" stroke="url(#navSigil3)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="44" y1="20" x2="20" y2="44" stroke="url(#navSigil3)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="32" cy="14" r="2.5" fill="url(#navSigil3)"/>
+          <circle cx="24" cy="18" r="2" fill="url(#navSigil3)"/>
+          <circle cx="40" cy="18" r="2" fill="url(#navSigil3)"/>
         </svg>
-        <span class="dash-logo-label">Cephroid ST</span>
+        <span class="dash-logo-label">CEBROID ST</span>
       </a>
 
       <!-- Live Indicator -->
